@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+  color: #e5e7eb;
+}
+
+/* Main container */
+.container {
+  width: 380px;
+  padding: 28px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Headings */
+.container h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.container h2 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #c7d2fe;
+}
+
+/* Form */
+#expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#expense-name,
+#expense-amount {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #f8fafc;
+  font-size: 0.9rem;
+}
+
+#expense-name::placeholder,
+#expense-amount::placeholder {
+  color: #94a3b8;
+}
+
+#expense-name:focus,
+#expense-amount:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.4);
+}
+
+/* Button (inside form) */
+#expense-form button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #020617;
+  background: linear-gradient(135deg, #a5b4fc, #818cf8);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#expense-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.35);
+}
+
+/* Expense list */
+#expense-list {
+  list-style: none;
+  margin-top: 12px;
+  padding: 0;
+}
+
+#expense-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+/* Total section */
+#total {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  text-align: center;
+}
+
+#total h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#total-amount {
+  color: #a5b4fc;
+  font-weight: 600;
+}
