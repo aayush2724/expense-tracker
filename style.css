@@ -81,6 +81,18 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.button{
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #020617;
+  background: linear-gradient(135deg, #a5b4fc, #818cf8);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
 #expense-form button:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(129, 140, 248, 0.35);

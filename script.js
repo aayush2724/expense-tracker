@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = document.getElementById('total');
     const totamount = document.getElementById('total-amount');
 
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    let expenses = [];
 
     let TotalAmount = calculateAmount();
+    render();
+    updateTotal();
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -17,12 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(name!=""  && !isNaN(amount)  && amount>0){
             const newExpense= {
-                id : Date.now();
+                id : Date.now(),
                 name,
                 amount
             };
             expenses.push(newExpense);
             saveExpenses();
+            render();
             updateTotal();
 
             //clear input
@@ -30,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
             ExpenseAmount.value="";
         }
     })
+
+    function render(){
+        list.innerHTML = "";
+        expenses.forEach( expense => {
+            const li= document.createElement('li');
+            li.innerHTML=`
+            <span> ${expense.name} - $${expense.amount} </span>
+            <button data-id="${expense.id}" class="button" > Remove </button>
+            `;
+
+            list.appendChild(li);
+        });
+
+
+    }
 
     function calculateAmount(){
         return  expenses.reduce( (sum, expense) => sum+ expense.amount  , 0)
@@ -41,6 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTotal(){
         TotalAmount=calculateAmount();
-        
+        totamount.textContent = TotalAmount.toFixed(2);
     }
+
+    list.addEventListener('click', (e) => {
+        if(e.target.tagName === 'BUTTON'){
+           const dataId= parseInt(e.target.getAttribute('data-id')) ;
+
+           expenses= expenses.filter( (expense) =>  expense.id !== dataId);
+
+           saveExpenses();
+           render();
+           updateTotal();
+        }
+    })
 });
